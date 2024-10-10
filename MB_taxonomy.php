@@ -39,6 +39,7 @@ function taxm_category_form_field(){
 }
 add_action('category_add_form_fields','taxm_category_form_field');
 add_action('post_tag_add_form_fields','taxm_category_form_field');
+add_action('genra_add_form_fields','taxm_category_form_field');
 
 function taxm_category_edit_form_field($term){
     $extra_info = get_term_meta($term->term_id,'taxm_extra_info',true);
@@ -56,6 +57,7 @@ function taxm_category_edit_form_field($term){
 }
 add_action('category_edit_form_fields','taxm_category_edit_form_field');
 add_action('post_tag_edit_form_fields','taxm_category_edit_form_field');
+add_action('genra_edit_form_fields','taxm_category_edit_form_field');
 // Save data in dataBase
 function taxm_data_save($term_id){
     if(wp_verify_nonce($_POST['_wpnonce_add-tag'],'add-tag')){
@@ -64,7 +66,8 @@ function taxm_data_save($term_id){
     }
 }
  add_action('create_category','taxm_data_save');
- add_action('create_post_tag','taxm_data_save');
+ add_action('create_post_tag','taxm_data_save'); 
+ add_action('create_genra','taxm_data_save'); 
 
 function taxm_updata_save($term_id){
    if(wp_verify_nonce($_POST['_wpnonce'],"update-tag_{$term_id}")){
@@ -75,6 +78,7 @@ function taxm_updata_save($term_id){
 }
 add_action('edit_category','taxm_updata_save');
 add_action('edit_post_tag','taxm_updata_save');
+add_action('edit_genra','taxm_updata_save');
 
 
 ?>
